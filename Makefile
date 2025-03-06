@@ -24,18 +24,18 @@ DEP := $(OBJ:$(OBJ_DIR)/%.o=$(DEP_DIR)/%.d)
 
 MAKE := make -j
 CC := cc
-CFLAGS := -Wall -Wextra -Werror
-INC := -I$(INC_DIR) -I/usr/include -Imlx_linux
+CFLAGS := -Wall -Wextra -Werror -g
+INC := -I$(INC_DIR) -I/usr/include
 LIBFT := $(LIBFT_DIR)libft.a
 
 $(NAME): $(OBJ) $(LIBFT) 
 	$(CC) $(CFLAGS) $(INC) $^ $(LIBS) -o $@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/fractol.h
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/pipex.h
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INC) -MMD -MP -c $< -o $@
 
-$(LIBFT):
+$(LIBFT): force
 	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
@@ -47,6 +47,8 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean $(NAME)
+
+force :
 
 -include $(DEP)
 

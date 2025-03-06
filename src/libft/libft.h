@@ -91,5 +91,6 @@ int		compute_size(int n);
 int		compute_size_long(long n);
 t_bool	ft_isspace(int c);
 t_bool	ft_is_plus_or_minus(int c);
+size_t	count_words(char const *s, char c);
 
 #endif
