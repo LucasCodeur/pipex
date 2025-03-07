@@ -1,0 +1,748 @@
+[
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_strlen.o",
+   "-c",
+   "ft_strlen.c"
+  ],
+  "file": "ft_strlen.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_strtrim.o",
+   "-c",
+   "ft_strtrim.c"
+  ],
+  "file": "ft_strtrim.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_isascii.o",
+   "-c",
+   "ft_isascii.c"
+  ],
+  "file": "ft_isascii.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/libft/ft_atol.c",
+   "-o",
+   "obj/libft/ft_atol.o"
+  ],
+  "file": "src/libft/ft_atol.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_substr.o",
+   "-c",
+   "ft_substr.c"
+  ],
+  "file": "ft_substr.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_tolower.o",
+   "-c",
+   "ft_tolower.c"
+  ],
+  "file": "ft_tolower.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_toupper.o",
+   "-c",
+   "ft_toupper.c"
+  ],
+  "file": "ft_toupper.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/libft/ft_lstnew_bonus.c",
+   "-o",
+   "obj/libft/ft_lstnew_bonus.o"
+  ],
+  "file": "src/libft/ft_lstnew_bonus.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_isalpha.o",
+   "-c",
+   "ft_isalpha.c"
+  ],
+  "file": "ft_isalpha.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_calloc.o",
+   "-c",
+   "ft_calloc.c"
+  ],
+  "file": "ft_calloc.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_atoi.o",
+   "-c",
+   "ft_atoi.c"
+  ],
+  "file": "ft_atoi.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_memchr.o",
+   "-c",
+   "ft_memchr.c"
+  ],
+  "file": "ft_memchr.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_isprint.o",
+   "-c",
+   "ft_isprint.c"
+  ],
+  "file": "ft_isprint.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/libft/ft_lstdelone_bonus.c",
+   "-o",
+   "obj/libft/ft_lstdelone_bonus.o"
+  ],
+  "file": "src/libft/ft_lstdelone_bonus.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/libft/ft_lstclear_bonus.c",
+   "-o",
+   "obj/libft/ft_lstclear_bonus.o"
+  ],
+  "file": "src/libft/ft_lstclear_bonus.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_putendl_fd.o",
+   "-c",
+   "ft_putendl_fd.c"
+  ],
+  "file": "ft_putendl_fd.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_isalnum.o",
+   "-c",
+   "ft_isalnum.c"
+  ],
+  "file": "ft_isalnum.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_putnbr_fd.o",
+   "-c",
+   "ft_putnbr_fd.c"
+  ],
+  "file": "ft_putnbr_fd.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/libft/ft_lstadd_back_bonus.c",
+   "-o",
+   "obj/libft/ft_lstadd_back_bonus.o"
+  ],
+  "file": "src/libft/ft_lstadd_back_bonus.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/libft/ft_lstmap_bonus.c",
+   "-o",
+   "obj/libft/ft_lstmap_bonus.o"
+  ],
+  "file": "src/libft/ft_lstmap_bonus.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/libft/ft_lstiter_bonus.c",
+   "-o",
+   "obj/libft/ft_lstiter_bonus.o"
+  ],
+  "file": "src/libft/ft_lstiter_bonus.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/libft/ft_lstlast_bonus.c",
+   "-o",
+   "obj/libft/ft_lstlast_bonus.o"
+  ],
+  "file": "src/libft/ft_lstlast_bonus.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_isdigit.o",
+   "-c",
+   "ft_isdigit.c"
+  ],
+  "file": "ft_isdigit.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/libft/ft_lstsize_bonus.c",
+   "-o",
+   "obj/libft/ft_lstsize_bonus.o"
+  ],
+  "file": "src/libft/ft_lstsize_bonus.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_memcmp.o",
+   "-c",
+   "ft_memcmp.c"
+  ],
+  "file": "ft_memcmp.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_memcpy.o",
+   "-c",
+   "ft_memcpy.c"
+  ],
+  "file": "ft_memcpy.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_memset.o",
+   "-c",
+   "ft_memset.c"
+  ],
+  "file": "ft_memset.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_memmove.o",
+   "-c",
+   "ft_memmove.c"
+  ],
+  "file": "ft_memmove.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_putchar_fd.o",
+   "-c",
+   "ft_putchar_fd.c"
+  ],
+  "file": "ft_putchar_fd.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/libft/ft_lstadd_front_bonus.c",
+   "-o",
+   "obj/libft/ft_lstadd_front_bonus.o"
+  ],
+  "file": "src/libft/ft_lstadd_front_bonus.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_bzero.o",
+   "-c",
+   "ft_bzero.c"
+  ],
+  "file": "ft_bzero.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_putstr_fd.o",
+   "-c",
+   "ft_putstr_fd.c"
+  ],
+  "file": "ft_putstr_fd.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_split.o",
+   "-c",
+   "ft_split.c"
+  ],
+  "file": "ft_split.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_strchr.o",
+   "-c",
+   "ft_strchr.c"
+  ],
+  "file": "ft_strchr.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_strdup.o",
+   "-c",
+   "ft_strdup.c"
+  ],
+  "file": "ft_strdup.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_striteri.o",
+   "-c",
+   "ft_striteri.c"
+  ],
+  "file": "ft_striteri.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_strjoin.o",
+   "-c",
+   "ft_strjoin.c"
+  ],
+  "file": "ft_strjoin.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_strlcat.o",
+   "-c",
+   "ft_strlcat.c"
+  ],
+  "file": "ft_strlcat.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_strlcpy.o",
+   "-c",
+   "ft_strlcpy.c"
+  ],
+  "file": "ft_strlcpy.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "compute_size_long.o",
+   "-c",
+   "compute_size_long.c"
+  ],
+  "file": "compute_size_long.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_strmapi.o",
+   "-c",
+   "ft_strmapi.c"
+  ],
+  "file": "ft_strmapi.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_strncmp.o",
+   "-c",
+   "ft_strncmp.c"
+  ],
+  "file": "ft_strncmp.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_strnstr.o",
+   "-c",
+   "ft_strnstr.c"
+  ],
+  "file": "ft_strnstr.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_strrchr.o",
+   "-c",
+   "ft_strrchr.c"
+  ],
+  "file": "ft_strrchr.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_itoa.o",
+   "-c",
+   "ft_itoa.c"
+  ],
+  "file": "ft_itoa.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_printf/ft_printf_utils.o",
+   "-c",
+   "ft_printf/ft_printf_utils.c"
+  ],
+  "file": "ft_printf/ft_printf_utils.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex/src/libft",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-o",
+   "ft_printf/ft_printf.o",
+   "-c",
+   "ft_printf/ft_printf.c"
+  ],
+  "file": "ft_printf/ft_printf.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/main.c",
+   "-o",
+   "obj/main.o"
+  ],
+  "file": "src/main.c"
+ },
+ {
+  "directory": "/home/lud-adam/Documents/pipex",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/usr/include",
+   "-MMD",
+   "-MP",
+   "-c",
+   "src/get_path/get_path.c",
+   "-o",
+   "obj/get_path/get_path.o"
+  ],
+  "file": "src/get_path/get_path.c"
+ }
+]
