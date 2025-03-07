@@ -31,10 +31,11 @@ typedef struct s_data
 	int		pid_2;
 	int		fd[2];
 	char	**path_bins;
+	char	*path;
 }	t_data;
 
 // PARSING ENVP
-char*	get_path(char *envp[]);
+char	*get_path(char *envp[]);
 char	**get_path_bins(char *envp[]);
 
 

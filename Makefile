@@ -35,7 +35,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/pipex.h
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INC) -MMD -MP -c $< -o $@
 
-$(LIBFT): force
+$(LIBFT): 
 	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
