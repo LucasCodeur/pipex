@@ -30,6 +30,7 @@ typedef struct s_data
 	int		pid_1;
 	int		pid_2;
 	int		fd[2];
+	int		fd_2[2];
 	char	**path_bins;
 	char	*path;
 }	t_data;
