@@ -6,7 +6,7 @@
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 09:25:47 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/10 14:23:11 by lud-adam         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:04:13 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	first_child(t_data *data, char *envp[], char *argv[])
 		{
 			exit(EXIT_FAILURE);
 		}
-		ft_printf("JE SUIS ICI");
 		close(data->fd.first_pipe[1]);
 		exec_command(data, envp, argv[2]);
 	}
@@ -51,7 +50,7 @@ void	last_child(t_data *data, char *envp[], char *argv[])
 	data->pid_2 = fork();
 	if (data->pid_2 == 0)
 	{
-		if (dup2(data->fd.first_pipe[0], STDIN_FILENO) == -1)
+		if (dup2(data->fd.last_pipe[0], STDIN_FILENO) == -1)
 		{
 			exit(EXIT_FAILURE);
 		}
