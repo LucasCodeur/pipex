@@ -26,13 +26,21 @@
 // TODO TAKE OFF
 	# include <stdio.h>
 
+typedef struct s_fd
+{
+	int		first_pipe[2];
+	int		last_pipe[2];
+	int		infile;
+	int		outfile;
+
+}	s_fd;
+
 typedef struct s_data
 {
+	s_fd	fd;
 	size_t	i;
 	int		pid_1;
 	int		pid_2;
-	int		fd[2];
-	int		fd_2[2];
 	char	*path_bin;
 	char	*path;
 	char	**commands;
@@ -40,6 +48,7 @@ typedef struct s_data
 	char	buf[4096];
 	int		end;
 }	t_data;
+
 
 char	*get_path(char *envp[]);
 char	**get_path_bins(char *envp[]);
