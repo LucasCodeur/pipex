@@ -22,18 +22,21 @@ int	main(int argc, char **argv, char **envp)
 	
 	if (argc == 0 || argc > 5)
 		return (1);
-	if (pipe(data.fd) == -1)
+	if (pipe(data.fd.first_pipe) == -1)
+	{
+		perror("pipe error: Too many open files");
 		return (1);
+	}
 	data.all_paths = get_path_bins(envp);
 	if (!data.all_paths)
 		return (1);
 	first_child(&data, envp, argv);
-	if (pipe(data.fd_2) == -1)
+	if (pipe(data.fd.last_pipe) == -1)
 		return (1);
-	data.end = read(data.fd[0], &data.buf, 4096);
+	data.end = read(data.fd.first_pipe[0], &data.buf, 4096);
 	last_child(&data, envp, argv);
-	close(data.fd_2[0]);
-	close(data.fd_2[1]);
+	close(data.fd.last_pipe[0]);
+	close(data.fd.last_pipe[1]);
 	waitpid(data.pid_1, NULL, 0);
 	waitpid(data.pid_2, NULL, 0);
 	return (0);

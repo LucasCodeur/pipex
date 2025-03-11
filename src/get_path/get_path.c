@@ -21,10 +21,11 @@ char	*get_path(char *envp[])
 	while (envp && envp[i] != NULL)
 	{
 		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
-			break ;
+			if (ft_strlen(envp[i]) > 5)
+				return (envp[i]);
 		i++;
 	}
-	return (envp[i]);
+	return (NULL);
 }
 
 char	**get_path_bins(char *envp[])
