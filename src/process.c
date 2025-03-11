@@ -42,7 +42,6 @@ void	last_child(t_data *data, char *envp[], char *argv[])
 {
 	close(data->fd.first_pipe[0]);
 	close(data->fd.first_pipe[1]);
-	data->buf[data->end] = '\0';
 	ft_putstr_fd(data->buf, data->fd.last_pipe[1]);
 	close(data->fd.last_pipe[1]);
 	data->i = 0;

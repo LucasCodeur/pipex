@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <unistd.h>
 
 char	*get_path(char *envp[])
 {
@@ -31,15 +30,16 @@ char	*get_path(char *envp[])
 char	**get_path_bins(char *envp[])
 {
 	char	*path;
-	char	**differents_path;
+	char	**all_paths_bins;
 
 	path = get_path(envp);
-	differents_path = malloc(sizeof(char *) * count_words(path, ':'));
-	if (!differents_path)
+	if (!path)
 		exit(EXIT_FAILURE);
-	path = get_path(envp);
-	differents_path = ft_split(path, ':');
-	if (!differents_path)
+	all_paths_bins = ft_split(path, ':');
+	if (!all_paths_bins)
+	{
+		free(path);
 		exit(EXIT_FAILURE);
-	return (differents_path);
+	}
+	return (all_paths_bins);
 }

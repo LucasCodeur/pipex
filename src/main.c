@@ -20,7 +20,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_data	data;
 	
-	if (argc == 0 || argc > 5)
+	if (argc == 0 || argc > 5 || !envp)
 		return (1);
 	if (pipe(data.fd.first_pipe) == -1)
 	{
@@ -34,6 +34,7 @@ int	main(int argc, char **argv, char **envp)
 	if (pipe(data.fd.last_pipe) == -1)
 		return (1);
 	data.end = read(data.fd.first_pipe[0], &data.buf, 4096);
+	data.buf[data.end] = '\0';
 	last_child(&data, envp, argv);
 	close(data.fd.last_pipe[0]);
 	close(data.fd.last_pipe[1]);
