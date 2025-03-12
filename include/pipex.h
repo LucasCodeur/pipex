@@ -6,7 +6,7 @@
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 10:50:55 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/11 19:18:52 by lud-adam         ###   ########.fr       */
+/*   Updated: 2025/03/11 19:36:26 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_data
 	size_t	i;
 	int		pid_1;
 	int		pid_2;
+	int		status;
+	int		status_1;
 	char	*path_bin;
 	char	*path;
 	char	**commands;
@@ -56,10 +58,10 @@ void	last_child(t_data *data, char *envp[], char *argv[]);
 void	first_child(t_data *data, char *envp[], char *argv[]);
 void	exec_command(t_data *data, char *envp[], char *command);
 
-
 // Utils
 char	*str_two_join(char *str, char *str_2, char *str_3);
 char	**free_double_array(char **strs);
 size_t	nb_lines(char **strs);
+size_t	ft_strlen_choose_way_and_c(char *str, char c, t_bool start_or_end);
 
 #endif

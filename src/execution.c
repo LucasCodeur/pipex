@@ -6,12 +6,13 @@
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:31:36 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/10 13:55:19 by lud-adam         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:12:01 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "pipex.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 char	*get_command_with_path(t_data *data, char *command)
@@ -39,21 +40,35 @@ void	exec_command(t_data *data, char *envp[], char *command)
 {
 	char	*pathname;
 	char	**final_command;
+	char	*temp;
 
 	pathname = command;
 	final_command = NULL;
+	temp = NULL;
 	if (access(pathname, X_OK) == -1)
 	{
 		pathname = get_command_with_path(data, command);
 		if (!pathname)
 			exit(EXIT_FAILURE);
-		execve(pathname, data->commands, envp);
+		if (execve(pathname, data->commands, envp) == -1)
+		{
+			perror("execve error");
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{
-		final_command = ft_split(command, '/');
+		final_command = malloc(sizeof(char *) * 3);
+		temp = ft_strrchr(command, '/') + 1;
+		final_command[1] = ft_strdup(temp);
+		final_command[2] = NULL;
 		if (!final_command)
 			exit(EXIT_FAILURE);
-		execve(pathname, &final_command[nb_lines(final_command) - 1], envp);
+		if (execve(pathname, &final_command[1], envp) == -1)
+		{
+			perror("execve error");
+			free_double_array(final_command);
+			exit(EXIT_FAILURE);
+		}
 	}
 }

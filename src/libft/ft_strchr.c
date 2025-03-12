@@ -18,6 +18,8 @@ char	*ft_strchr(const char *s, int c)
 	size_t	to_reach;
 
 	i = 0;
+	if (!s || !c)
+		return (NULL);
 	to_reach = ft_strlen(s);
 	while (i <= to_reach)
 	{

@@ -36,11 +36,13 @@ char	**free_double_array(char **strs)
 	i = 0;
 	if (!strs)
 		return (NULL);
-	while (strs)
+	while (strs[i])
 	{
-		free(strs[i]);
+		if (strs[i])
+			free(strs[i]);
 		i++;
 	}
+	free(strs);
 	return (NULL);
 }
 
@@ -54,4 +56,33 @@ size_t	nb_lines(char **strs)
 	while (strs[i])
 		i++;
 	return (i);
+}
+
+size_t	ft_strlen_choose_way_and_c(char *str, char c, t_bool start_or_end)
+{
+	size_t	i;
+	size_t	j;
+	size_t	k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	if (!str)
+		return (0);
+	if (start_or_end == TRUE)
+	{
+		while (str[k] != c && str[k])
+			k++;
+		return (k);
+	}
+	i = ft_strlen(str);
+	if (start_or_end == FALSE)
+	{
+		j = i - 1;
+		i--;
+		while (str[i] != c)
+			i--;
+		return (j - i);
+	}
+	return (0);
 }
