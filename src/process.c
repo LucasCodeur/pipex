@@ -21,7 +21,6 @@ void	first_child(t_data *data, char *envp[], char *argv[])
 		perror("Error open");
 		exit(EXIT_FAILURE);
 	}
-	data->i = 0;
 	data->pid_1 = fork();
 	if (data->pid_1 < 0)
 	{
@@ -56,7 +55,6 @@ void	last_child(t_data *data, char *envp[], char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	close(data->fd.last_pipe[1]);
-	data->i = 0;
 	data->fd.outfile = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	data->pid_2 = fork();
 	if (data->pid_2 == 0)

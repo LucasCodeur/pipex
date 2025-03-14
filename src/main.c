@@ -6,7 +6,7 @@
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 10:43:40 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/12 18:02:07 by lud-adam         ###   ########.fr       */
+/*   Updated: 2025/03/14 13:01:57 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_data	data;
 
-	if (argc == 0 || argc > 5 || !envp)
+	if (argc > 5 || !envp)
 		return (1);
 	if (pipe(data.fd.first_pipe) == -1)
 	{
@@ -43,13 +43,23 @@ int	main(int argc, char **argv, char **envp)
 		return (1);
 	}
 	data.buf[data.end] = '\0';
+	close(data.fd.first_pipe[0]);
+	close(data.fd.first_pipe[1]);
 	last_child(&data, envp, argv);
 	close(data.fd.last_pipe[0]);
 	close(data.fd.last_pipe[1]);
+	free_double_array(data.all_paths);
 	if (waitpid(data.pid_1, &data.status, 0) == -1)
+		exit(EXIT_FAILURE);
+	if (data.status == -1)
 		exit(EXIT_FAILURE);
 	if (waitpid(data.pid_2, &data.status, 0) == -1)
 		exit(EXIT_FAILURE);
-	free_double_array(data.all_paths);
+	if (data.status == -1)
+		exit(EXIT_FAILURE);
+	if (WIFEXITED(data.status))
+        exit(WEXITSTATUS(data.status));
+	else if (WIFSIGNALED(data.status))
+        exit(128 + WTERMSIG(data.status));
 	return (0);
 }

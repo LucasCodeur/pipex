@@ -17,6 +17,7 @@
 
 char	*get_command_with_path(t_data *data, char *command)
 {	
+	data->i = 0;
 	while (data->all_paths[data->i])
 	{
 		data->commands = ft_split(command, ' ');
