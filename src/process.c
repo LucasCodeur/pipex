@@ -15,31 +15,28 @@
 
 void	first_child(t_data *data, char *envp[], char *argv[])
 {
-	data->fd.infile = open(argv[1], O_CREAT | O_RDONLY, 0644); 
-	if (data->fd.infile == -1)
-	{
-		perror("Error open");
-		exit(EXIT_FAILURE);
-	}
 	data->pid_1 = fork();
 	if (data->pid_1 < 0)
 	{
+		free_and_close_all(data);
 		perror("Error pid_1");
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 	}
 	if (data->pid_1 == 0)
 	{
 		if (dup2(data->fd.infile, STDIN_FILENO) == -1) 
 		{
+			free_and_close_all(data);
 			perror("Error dup2");
 			exit(EXIT_FAILURE);
 		}
 		if (dup2(data->fd.first_pipe[1], STDOUT_FILENO) == -1)
 		{
+			free_and_close_all(data);
 			perror("Error dup2");
 			exit(EXIT_FAILURE);
 		}
-		close(data->fd.first_pipe[1]);
+		close(data->fd.first_pipe[0]);
 		exec_command(data, envp, argv[2]);
 	}
 	close(data->fd.infile);
@@ -47,29 +44,22 @@ void	first_child(t_data *data, char *envp[], char *argv[])
 
 void	last_child(t_data *data, char *envp[], char *argv[])
 {
-	close(data->fd.first_pipe[0]);
-	close(data->fd.first_pipe[1]);
-	if (ft_putstr_fd(data->buf, data->fd.last_pipe[1]) == -1)
-	{
-		perror("Write error");
-		exit(EXIT_FAILURE);
-	}
-	close(data->fd.last_pipe[1]);
-	data->fd.outfile = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	data->pid_2 = fork();
 	if (data->pid_2 == 0)
 	{
-		if (dup2(data->fd.last_pipe[0], STDIN_FILENO) == -1)
+		if (dup2(data->fd.first_pipe[0], STDIN_FILENO) == -1)
 		{
+			free_and_close_all(data);
 			perror("Error dup2");
 			exit(EXIT_FAILURE);
 		}
-		close(data->fd.last_pipe[0]);
 		if (dup2(data->fd.outfile, STDOUT_FILENO) == -1)
 		{
+			free_and_close_all(data);
 			perror("Error dup2");
 			exit(EXIT_FAILURE);
 		}
+		close(data->fd.first_pipe[1]);
 		exec_command(data, envp, argv[3]);
 	}
 	close(data->fd.outfile);

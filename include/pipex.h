@@ -29,7 +29,6 @@
 typedef struct s_fd
 {
 	int		first_pipe[2];
-	int		last_pipe[2];
 	int		infile;
 	int		outfile;
 
@@ -63,5 +62,6 @@ char	*str_two_join(char *str, char *str_2, char *str_3);
 char	**free_double_array(char **strs);
 size_t	nb_lines(char **strs);
 size_t	ft_strlen_choose_way_and_c(char *str, char c, t_bool start_or_end);
+void	free_and_close_all(t_data *data);
 
 #endif

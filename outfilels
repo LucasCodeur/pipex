@@ -1,11 +1,11 @@
-total 452$
+total 448$
 drwxr-xr-x 5 lud-adam 2024_lyon   4096 Mar 14 15:59 42_pipex_tester$
 -rw-r--r-- 1 lud-adam 2024_lyon  11899 Mar  7 11:41 compile_commands.json$
 drwxr-xr-x 2 lud-adam 2024_lyon     40 Mar 14 12:29 include$
 -rw-r--r-- 1 lud-adam 2024_lyon 366192 Mar 14 14:44 infile$
 -rw-r--r-- 1 lud-adam 2024_lyon   1720 Mar 12 17:28 Makefile$
 drwxr-xr-x 4 lud-adam 2024_lyon    185 Mar 14 16:02 obj$
--rw-r--r-- 1 lud-adam 2024_lyon      0 Mar 14 16:49 outfile$
--rw-r--r-- 1 lud-adam 2024_lyon    635 Mar 14 16:48 outfilels$
+-r--r--r-- 1 lud-adam 2024_lyon      0 Mar 14 15:29 outfile$
+-rw-r--r-- 1 lud-adam 2024_lyon      0 Mar 14 16:48 outfilels$
 -rwxr-xr-x 1 lud-adam 2024_lyon  66160 Mar 14 16:02 pipex$
 drwxr-xr-x 4 lud-adam 2024_lyon    126 Mar 14 16:21 src$

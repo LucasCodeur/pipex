@@ -22,10 +22,16 @@ char	*get_command_with_path(t_data *data, char *command)
 	{
 		data->commands = ft_split(command, ' ');
 		if (!data->commands)
+		{
+			free_and_close_all(data);
 			exit(EXIT_FAILURE);
+		}
 		data->path_bin = str_two_join(data->all_paths[data->i], "/", data->commands[0]);
 		if (!data->path_bin)
+		{
+			free_and_close_all(data);
 			exit(EXIT_FAILURE);
+		}
 		if (access(data->path_bin, X_OK) == -1)
 		{
 			free(data->path_bin);
@@ -50,9 +56,13 @@ void	exec_command(t_data *data, char *envp[], char *command)
 	{
 		pathname = get_command_with_path(data, command);
 		if (!pathname)
-			exit(EXIT_FAILURE);
+		{
+			free_and_close_all(data);
+			exit(127);
+		}
 		if (execve(pathname, data->commands, envp) == -1)
 		{
+			free_and_close_all(data);
 			perror("execve error");
 			exit(EXIT_FAILURE);
 		}
@@ -64,11 +74,14 @@ void	exec_command(t_data *data, char *envp[], char *command)
 		final_command[1] = ft_strdup(temp);
 		final_command[2] = NULL;
 		if (!final_command)
+		{
+			free_and_close_all(data);
 			exit(EXIT_FAILURE);
+		}
 		if (execve(pathname, &final_command[1], envp) == -1)
 		{
+			free_and_close_all(data);
 			perror("execve error");
-			free_double_array(final_command);
 			exit(EXIT_FAILURE);
 		}
 	}
