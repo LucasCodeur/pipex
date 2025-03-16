@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lud-adam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eveil <eveil@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:01:58 by lud-adam          #+#    #+#             */
-/*   Updated: 2024/11/20 13:41:13 by lud-adam         ###   ########.fr       */
+/*   Updated: 2025/03/16 15:06:10 by eveil            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ size_t	count_words(char const *s, char c)
 	size_t	count;
 
 	count = 0;
-	while (*s != '\0' && c)
+	if (!s)
+		return (count);
+	while (*s != '\0')
 	{
 		if (*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
 			count++;
@@ -32,7 +34,7 @@ static char	**ft_free(char **strs, size_t j)
 	size_t	i;
 
 	i = 0;
-	while (i < j + 1)
+	while (i < j)
 	{
 		free(strs[i]);
 		i++;
@@ -75,13 +77,15 @@ char	**ft_split(const char *s, char c)
 	size_t	i;
 	size_t	j;
 
+	if (!s || s[0] == '\0')
+		return (NULL);
 	size = count_words(s, c);
 	i = 0;
 	j = 0;
 	final_array = ft_calloc(size + 1, sizeof(char *));
 	if (!final_array)
 		return (final_array);
-	while (j < size)
+	while (j < size && s)
 	{
 		while (s[i] == c)
 			i++;

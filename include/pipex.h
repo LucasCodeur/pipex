@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eveil <eveil@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 10:50:55 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/11 19:36:26 by lud-adam         ###   ########.fr       */
+/*   Updated: 2025/03/16 14:34:14 by eveil            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ char	*get_path(char *envp[]);
 char	**get_path_bins(char *envp[]);
 void	last_child(t_data *data, char *envp[], char *argv[]);
 void	first_child(t_data *data, char *envp[], char *argv[]);
+void	one_conmmand(t_data *data, char *envp[], char *argv[]);
 void	exec_command(t_data *data, char *envp[], char *command);
 
 // Utils
@@ -62,6 +63,7 @@ char	*str_two_join(char *str, char *str_2, char *str_3);
 char	**free_double_array(char **strs);
 size_t	nb_lines(char **strs);
 size_t	ft_strlen_choose_way_and_c(char *str, char c, t_bool start_or_end);
+void	close_fds(t_data *data);
 void	free_and_close_all(t_data *data);
 
 #endif

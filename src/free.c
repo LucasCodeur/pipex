@@ -3,25 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eveil <eveil@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 18:02:16 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/14 18:14:23 by lud-adam         ###   ########.fr       */
+/*   Updated: 2025/03/16 14:10:59 by eveil            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	free_and_close_all(t_data *data)
+void	close_fds(t_data *data)
 {
-	if (data->all_paths)
-		free_double_array(data->all_paths);
-	if (data->commands)
-		free_double_array(data->commands);
-	if (data->path)
-		free(data->path);
-	if (data->path_bin)
-		free(data->path_bin);
 	if (data->fd.first_pipe[0] != -1)
 		close(data->fd.first_pipe[0]);
 	if (data->fd.first_pipe[1] != -1)
@@ -30,4 +22,31 @@ void	free_and_close_all(t_data *data)
 		close(data->fd.infile);
 	if (data->fd.outfile != -1)
 		close(data->fd.outfile);
+	
+}
+
+void	free_and_close_all(t_data *data)
+{
+	if (!data)
+		return ;
+	if (data->all_paths)
+	{
+		free_double_array(data->all_paths);
+		data->all_paths = NULL;
+	}
+	// if (data->commands)
+	// {
+	// 	free_double_array(data->commands);
+	// 	data->commands = NULL;
+	// }
+	if (data->path)
+	{
+		free(data->path);
+		data->path = NULL;
+	}
+	// if (data->path_bin)
+	// {
+	// 	free(data->path_bin);
+	// 	data->path_bin = NULL;
+	// }
 }

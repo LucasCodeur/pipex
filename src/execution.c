@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eveil <eveil@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:31:36 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/12 18:12:01 by lud-adam         ###   ########.fr       */
+/*   Updated: 2025/03/16 15:15:15 by eveil            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ char	*get_command_with_path(t_data *data, char *command)
 	{
 		data->commands = ft_split(command, ' ');
 		if (!data->commands)
-		{
-			free_and_close_all(data);
-			exit(EXIT_FAILURE);
-		}
+			return (NULL);
 		data->path_bin = str_two_join(data->all_paths[data->i], "/", data->commands[0]);
 		if (!data->path_bin)
 		{
@@ -38,7 +35,10 @@ char	*get_command_with_path(t_data *data, char *command)
 			data->i++;
 		}
 		else
+		{
 			return (data->path_bin);
+		}
+		free_double_array(data->commands);
 	}
 	return (NULL);
 }
@@ -66,6 +66,8 @@ void	exec_command(t_data *data, char *envp[], char *command)
 			perror("execve error");
 			exit(EXIT_FAILURE);
 		}
+		free(pathname);
+		free_and_close_all(data);
 	}
 	else
 	{
@@ -78,11 +80,15 @@ void	exec_command(t_data *data, char *envp[], char *command)
 			free_and_close_all(data);
 			exit(EXIT_FAILURE);
 		}
+		free_double_array(data->commands); // Free the allocated memory
 		if (execve(pathname, &final_command[1], envp) == -1)
 		{
+			free_double_array(final_command);
 			free_and_close_all(data);
 			perror("execve error");
 			exit(EXIT_FAILURE);
 		}
+		free_double_array(final_command);
 	}
+
 }
