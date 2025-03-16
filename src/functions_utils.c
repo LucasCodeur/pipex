@@ -6,7 +6,7 @@
 /*   By: eveil <eveil@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 17:19:13 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/16 13:30:14 by eveil            ###   ########lyon.fr   */
+/*   Updated: 2025/03/16 17:35:16 by eveil            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,45 +44,4 @@ char	**free_double_array(char **strs)
 	}
 	free(strs);
 	return (NULL);
-}
-
-size_t	nb_lines(char **strs)
-{
-	size_t	i;
-
-	i = 0;
-	if (!strs)
-		return (0);
-	while (strs[i])
-		i++;
-	return (i);
-}
-
-size_t	ft_strlen_choose_way_and_c(char *str, char c, t_bool start_or_end)
-{
-	size_t	i;
-	size_t	j;
-	size_t	k;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	if (!str)
-		return (0);
-	if (start_or_end == TRUE)
-	{
-		while (str[k] != c && str[k])
-			k++;
-		return (k);
-	}
-	i = ft_strlen(str);
-	if (start_or_end == FALSE)
-	{
-		j = i - 1;
-		i--;
-		while (str[i] != c)
-			i--;
-		return (j - i);
-	}
-	return (0);
 }

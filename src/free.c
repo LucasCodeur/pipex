@@ -6,7 +6,7 @@
 /*   By: eveil <eveil@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 18:02:16 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/16 14:10:59 by eveil            ###   ########lyon.fr   */
+/*   Updated: 2025/03/16 17:35:38 by eveil            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,9 @@ void	free_and_close_all(t_data *data)
 		free_double_array(data->all_paths);
 		data->all_paths = NULL;
 	}
-	// if (data->commands)
-	// {
-	// 	free_double_array(data->commands);
-	// 	data->commands = NULL;
-	// }
 	if (data->path)
 	{
 		free(data->path);
 		data->path = NULL;
 	}
-	// if (data->path_bin)
-	// {
-	// 	free(data->path_bin);
-	// 	data->path_bin = NULL;
-	// }
 }
