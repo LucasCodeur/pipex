@@ -6,12 +6,12 @@
 /*   By: eveil <eveil@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:54:45 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/16 17:34:50 by eveil            ###   ########lyon.fr   */
+/*   Updated: 2025/03/17 14:34:16 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
+#include <stddef.h>
 
 size_t	ft_strlen(const char *str)
 {

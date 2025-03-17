@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eveil <eveil@student.42lyon.fr>            +#+  +:+       +#+         #
+#    By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/07 16:42:49 by lud-adam          #+#    #+#              #
-#    Updated: 2025/03/16 18:10:11 by eveil            ###   ########lyon.fr    #
+#    Created: 2025/03/17 11:11:52 by lud-adam          #+#    #+#              #
+#    Updated: 2025/03/17 14:04:33 by lud-adam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ DEP := $(OBJ:$(OBJ_DIR)/%.o=$(DEP_DIR)/%.d)
 
 MAKE := make -j
 CC := cc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -g
 INC := -I$(INC_DIR) -I/usr/include
 LIBFT := $(LIBFT_DIR)libft.a
 
@@ -69,4 +69,3 @@ re: fclean $(NAME)
 -include $(DEP)
 
 .PHONY: all clean fclean re
-

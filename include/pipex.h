@@ -6,25 +6,25 @@
 /*   By: eveil <eveil@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 10:50:55 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/16 14:34:14 by eveil            ###   ########lyon.fr   */
+/*   Updated: 2025/03/17 16:34:17 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include <stddef.h>
-# include <unistd.h> 
-# include <sys/wait.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include <errno.h>
 # include "../src/libft/libft.h"
+# include <errno.h>
+# include <fcntl.h>
+# include <stddef.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/wait.h>
+# include <unistd.h>
+# include <unistd.h>
 
 // TODO TAKE OFF
-	# include <stdio.h>
+# include <stdio.h>
 
 typedef struct s_fd
 {
@@ -32,7 +32,7 @@ typedef struct s_fd
 	int		infile;
 	int		outfile;
 
-}	t_fd;
+}			t_fd;
 
 typedef struct s_data
 {
@@ -41,29 +41,25 @@ typedef struct s_data
 	int		pid_1;
 	int		pid_2;
 	int		status;
-	int		status_1;
+	int		end;
+	char	*pathname;
 	char	*path_bin;
 	char	*path;
 	char	**commands;
 	char	**all_paths;
 	char	buf[4096];
-	int		end;
-}	t_data;
+	t_bool	path_is_empty;
+}			t_data;
 
-
-char	*get_path(char *envp[]);
-char	**get_path_bins(char *envp[]);
-void	last_child(t_data *data, char *envp[], char *argv[]);
-void	first_child(t_data *data, char *envp[], char *argv[]);
-void	one_conmmand(t_data *data, char *envp[], char *argv[]);
-void	exec_command(t_data *data, char *envp[], char *command);
+char		**get_path_bins(t_data *data, char *envp[]);
+void		last_child(t_data *data, char *envp[], char *argv[]);
+void		first_child(t_data *data, char *envp[], char *argv[]);
+void		one_conmmand(t_data *data, char *envp[], char *argv[]);
+void		exec_command(t_data *data, char *envp[], char *command);
 
 // Utils
-char	*str_two_join(char *str, char *str_2, char *str_3);
-char	**free_double_array(char **strs);
-size_t	nb_lines(char **strs);
-size_t	ft_strlen_choose_way_and_c(char *str, char c, t_bool start_or_end);
-void	close_fds(t_data *data);
-void	free_and_close_all(t_data *data);
+char		*str_two_join(char *str, char *str_2, char *str_3);
+char		**free_double_array(char **strs);
+void		free_and_close_all(t_data *data);
 
 #endif

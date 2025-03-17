@@ -6,17 +6,17 @@
 /*   By: eveil <eveil@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 09:25:47 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/03/16 17:36:35 by eveil            ###   ########lyon.fr   */
+/*   Updated: 2025/03/17 15:51:35 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/ft_printf/ft_printf.h"
+#include "libft/libft.h"
 #include "pipex.h"
 
 static void	free_and_close(t_data *data)
 {
 	free_double_array(data->commands);
-	close(data->fd.infile);	
+	close(data->fd.infile);
 }
 
 void	first_child(t_data *data, char *envp[], char *argv[])
@@ -25,21 +25,18 @@ void	first_child(t_data *data, char *envp[], char *argv[])
 	if (data->pid_1 < 0)
 	{
 		free_and_close_all(data);
-		perror("Error pid_1");
 		exit(EXIT_SUCCESS);
 	}
 	if (data->pid_1 == 0)
 	{
-		if (dup2(data->fd.infile, STDIN_FILENO) == -1) 
+		if (dup2(data->fd.infile, STDIN_FILENO) == -1)
 		{
 			free_and_close_all(data);
-			perror("Error dup2");
 			exit(EXIT_FAILURE);
 		}
 		if (dup2(data->fd.first_pipe[1], STDOUT_FILENO) == -1)
 		{
 			free_and_close_all(data);
-			perror("Error dup2");
 			exit(EXIT_FAILURE);
 		}
 		close(data->fd.first_pipe[0]);
@@ -54,7 +51,6 @@ void	last_child(t_data *data, char *envp[], char *argv[])
 	if (data->pid_2 < 0)
 	{
 		free_and_close_all(data);
-		perror("Error pid_1");
 		exit(EXIT_SUCCESS);
 	}
 	if (data->pid_2 == 0)
@@ -62,13 +58,11 @@ void	last_child(t_data *data, char *envp[], char *argv[])
 		if (dup2(data->fd.first_pipe[0], STDIN_FILENO) == -1)
 		{
 			free_and_close_all(data);
-			perror("Error dup2");
 			exit(EXIT_FAILURE);
 		}
 		if (dup2(data->fd.outfile, STDOUT_FILENO) == -1)
 		{
 			free_and_close_all(data);
-			perror("Error dup2");
 			exit(EXIT_FAILURE);
 		}
 		close(data->fd.first_pipe[1]);
@@ -83,21 +77,20 @@ void	one_conmmand(t_data *data, char *envp[], char *argv[])
 	if (data->pid_1 < 0)
 	{
 		free_and_close_all(data);
-		perror("Error pid_1");
 		exit(EXIT_SUCCESS);
 	}
 	if (data->pid_1 == 0)
 	{
-		if (dup2(data->fd.infile, STDIN_FILENO) == -1) 
+		if (dup2(data->fd.infile, STDIN_FILENO) == -1)
 		{
 			free_and_close_all(data);
-			perror("Error dup2");
 			exit(EXIT_FAILURE);
 		}
 		if (dup2(data->fd.outfile, STDOUT_FILENO) == -1)
 		{
 			free_and_close_all(data);
-			perror("Error dup2");
+			ft_putstr_fd(argv[3], 2);
+			ft_putstr_fd(": Permission denied", 2);
 			exit(EXIT_FAILURE);
 		}
 		close(data->fd.infile);
