@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME := pipex
+
 SRC_DIR := src
 FTPRINTF_DIR := src/libft/ft_printf
 OBJ_DIR := obj
@@ -42,7 +43,7 @@ DEP := $(OBJ:$(OBJ_DIR)/%.o=$(DEP_DIR)/%.d)
 
 MAKE := make -j
 CC := cc
-CFLAGS := -Wall -Wextra -Werror -g
+CFLAGS := -Wall -Wextra -Werror
 INC := -I$(INC_DIR) -I/usr/include
 LIBFT := $(LIBFT_DIR)libft.a
 
