@@ -12,6 +12,46 @@
 
 #include "pipex.h"
 
+/*void	free_and_close_all(t_data *data, int hint_for_close)*/
+/*{*/
+/*	if (!data)*/
+/*		return ;*/
+/*	if (data->all_paths)*/
+/*	{*/
+/*		free_double_array(data->all_paths);*/
+/*		data->all_paths = NULL;*/
+/*	}*/
+/*	if (data->path)*/
+/*	{*/
+/*		free(data->path);*/
+/*		data->path = NULL;*/
+/*	}*/
+/*	if (hint_for_close == 4)*/
+/*	{*/
+/*		close(data->fd.first_pipe[0]);*/
+/*		close(data->fd.first_pipe[1]);*/
+/*		close(data->fd.infile);*/
+/*		close(data->fd.outfile);*/
+/*	}*/
+/*	if (hint_for_close == 1)*/
+/*		close(data->fd.outfile);*/
+/*	if (hint_for_close == 2)*/
+/*	{*/
+/*		close(data->fd.first_pipe[0]);*/
+/*	}*/
+/*}*/
+static void	close_fds(t_data *data)
+{
+	if (data->fd.first_pipe[0] == -1)
+		close(data->fd.first_pipe[0]);
+	if (data->fd.first_pipe[1] == -1)
+		close(data->fd.first_pipe[1]);
+	if (data->fd.infile == -1)
+		close(data->fd.infile);
+	if (data->fd.outfile == -1)
+		close(data->fd.outfile);
+}
+
 void	free_and_close_all(t_data *data)
 {
 	if (!data)
@@ -26,4 +66,5 @@ void	free_and_close_all(t_data *data)
 		free(data->path);
 		data->path = NULL;
 	}
+	close_fds(data);
 }

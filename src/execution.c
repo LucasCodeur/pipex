@@ -70,14 +70,14 @@ static void	handle_absolute_path(t_data *data, char *pathname, char *command,
 	final_command[2] = NULL;
 	if (!final_command)
 	{
-		free_and_close_all(data);
+		free_and_close_all(data, 0);
 		exit(EXIT_FAILURE);
 	}
 	free_double_array(data->commands);
 	if (execve(pathname, &final_command[1], envp) == -1)
 	{
 		free_double_array(final_command);
-		free_and_close_all(data);
+		free_and_close_all(data, 0);
 		exit(EXIT_FAILURE);
 	}
 	free_double_array(final_command);
@@ -92,17 +92,18 @@ void	exec_command(t_data *data, char *envp[], char *command)
 		data->pathname = get_command_with_path(data, command);
 		if (!data->pathname)
 		{
-			free_and_close_all(data);
+			free_and_close_all(data, 4);
 			ft_putstr_fd(command, 2);
 			ft_putstr_fd(": command not found\n", 2);
 			exit(127);
 		}
 		if (execve(data->pathname, data->commands, envp) == -1)
 		{
-			free_and_close_all(data);
+			free_and_close_all(data, 0);
+			ft_putstr_fd("HERE", 2);
 			exit(EXIT_FAILURE);
 		}
-		free_and_close_all(data);
+		free_and_close_all(data, 0);
 	}
 	else
 		handle_absolute_path(data, data->pathname, command, envp);

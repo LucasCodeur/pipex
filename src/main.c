@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "pipex.h"
+#include <stdio.h>
 
 static void	initialize_values(t_data *data)
 {
@@ -21,30 +21,30 @@ static void	initialize_values(t_data *data)
 	data->path_bin = NULL;
 	data->pathname = NULL;
 	data->path_is_empty = FALSE;
+	data->fd.outfile = -1;
+	data->fd.infile = -1;
+	data->fd.first_pipe[0] = -1;
+	data->fd.first_pipe[1] = -1;
 }
 
 static void	fds_pipes(t_data *data, char *argv[], int argc, char *envp[])
 {
 	data->fd.outfile = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (data->fd.outfile == -1)
-	{
-		perror(argv[1]);
-		close(data->fd.outfile);
-		exit(EXIT_SUCCESS);
-	}
+		perror("");
 	data->fd.infile = open(argv[1], O_RDONLY, 0644);
 	if (data->fd.infile == -1)
 	{
-		perror(argv[1]);
+		perror("");
 		close(data->fd.outfile);
 		exit(EXIT_SUCCESS);
 	}
 	if (pipe(data->fd.first_pipe) == -1)
 	{
-		perror("Pipe error");
+		perror("");
 		close(data->fd.outfile);
 		close(data->fd.infile);
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	}
 	data->all_paths = get_path_bins(data, envp);
 	if (!data->all_paths)
@@ -85,14 +85,14 @@ int	main(int argc, char **argv, char **envp)
 		close(data.fd.first_pipe[1]);
 		last_child(&data, envp, argv);
 		close(data.fd.first_pipe[0]);
-		free_and_close_all(&data);
+		free_and_close_all(&data, 0);
 	}
 	else if (argc == 4)
 	{
 		one_conmmand(&data, envp, argv);
-		free_and_close_all(&data);
+		free_and_close_all(&data, 0);
 	}
-	free_and_close_all(&data);
+	free_and_close_all(&data, 1);
 	handle_return_of_status(data, argc);
 	return (0);
 }

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "pipex.h"
+#include <unistd.h>
 
 static void	free_and_close(t_data *data)
 {
@@ -24,19 +24,21 @@ void	first_child(t_data *data, char *envp[], char *argv[])
 	data->pid_1 = fork();
 	if (data->pid_1 < 0)
 	{
-		free_and_close_all(data);
+		free_and_close_all(data, 0);
 		exit(EXIT_SUCCESS);
 	}
 	if (data->pid_1 == 0)
 	{
 		if (dup2(data->fd.infile, STDIN_FILENO) == -1)
 		{
-			free_and_close_all(data);
+			perror("");
+			free_and_close_all(data, 0);
 			exit(EXIT_FAILURE);
 		}
 		if (dup2(data->fd.first_pipe[1], STDOUT_FILENO) == -1)
 		{
-			free_and_close_all(data);
+			perror("");
+			free_and_close_all(data, 0);
 			exit(EXIT_FAILURE);
 		}
 		close(data->fd.first_pipe[0]);
@@ -50,25 +52,27 @@ void	last_child(t_data *data, char *envp[], char *argv[])
 	data->pid_2 = fork();
 	if (data->pid_2 < 0)
 	{
-		free_and_close_all(data);
+		free_and_close_all(data, 0);
 		exit(EXIT_SUCCESS);
 	}
 	if (data->pid_2 == 0)
 	{
 		if (dup2(data->fd.first_pipe[0], STDIN_FILENO) == -1)
 		{
-			free_and_close_all(data);
+			perror("");
+			free_and_close_all(data, 0);
 			exit(EXIT_FAILURE);
 		}
 		if (dup2(data->fd.outfile, STDOUT_FILENO) == -1)
 		{
-			free_and_close_all(data);
+			perror("");
+			free_and_close_all(data, 2);
 			exit(EXIT_FAILURE);
 		}
 		close(data->fd.first_pipe[1]);
 		exec_command(data, envp, argv[3]);
 	}
-	close(data->fd.outfile);
+	/*close(data->fd.outfile);*/
 }
 
 void	one_conmmand(t_data *data, char *envp[], char *argv[])
@@ -76,21 +80,21 @@ void	one_conmmand(t_data *data, char *envp[], char *argv[])
 	data->pid_1 = fork();
 	if (data->pid_1 < 0)
 	{
-		free_and_close_all(data);
+		free_and_close_all(data, 0);
 		exit(EXIT_SUCCESS);
 	}
 	if (data->pid_1 == 0)
 	{
 		if (dup2(data->fd.infile, STDIN_FILENO) == -1)
 		{
-			free_and_close_all(data);
+			perror("");
+			free_and_close_all(data, 0);
 			exit(EXIT_FAILURE);
 		}
 		if (dup2(data->fd.outfile, STDOUT_FILENO) == -1)
 		{
-			free_and_close_all(data);
-			ft_putstr_fd(argv[3], 2);
-			ft_putstr_fd(": Permission denied", 2);
+			perror("");
+			free_and_close_all(data, 0);
 			exit(EXIT_FAILURE);
 		}
 		close(data->fd.infile);
