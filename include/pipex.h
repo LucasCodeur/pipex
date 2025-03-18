@@ -37,7 +37,6 @@ typedef struct s_data
 	int		pid_1;
 	int		pid_2;
 	int		status;
-	int		end;
 	char	*pathname;
 	char	*path_bin;
 	char	*path;
@@ -48,14 +47,15 @@ typedef struct s_data
 }			t_data;
 
 char		**get_path_bins(t_data *data, char *envp[]);
+
 void		last_child(t_data *data, char *envp[], char *argv[]);
 void		first_child(t_data *data, char *envp[], char *argv[]);
 void		one_conmmand(t_data *data, char *envp[], char *argv[]);
 void		exec_command(t_data *data, char *envp[], char *command);
+void		free_and_close_all(t_data *data);
 
 // Utils
 char		*str_two_join(char *str, char *str_2, char *str_3);
 char		**free_double_array(char **strs);
-void		free_and_close_all(t_data *data);
 
 #endif

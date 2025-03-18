@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "pipex.h"
 #include <unistd.h>
 
@@ -24,7 +25,7 @@ void	first_child(t_data *data, char *envp[], char *argv[])
 	data->pid_1 = fork();
 	if (data->pid_1 < 0)
 	{
-		free_and_close_all(data, 0);
+		free_and_close_all(data);
 		exit(EXIT_SUCCESS);
 	}
 	if (data->pid_1 == 0)
@@ -32,13 +33,13 @@ void	first_child(t_data *data, char *envp[], char *argv[])
 		if (dup2(data->fd.infile, STDIN_FILENO) == -1)
 		{
 			perror("");
-			free_and_close_all(data, 0);
+			free_and_close_all(data);
 			exit(EXIT_FAILURE);
 		}
 		if (dup2(data->fd.first_pipe[1], STDOUT_FILENO) == -1)
 		{
 			perror("");
-			free_and_close_all(data, 0);
+			free_and_close_all(data);
 			exit(EXIT_FAILURE);
 		}
 		close(data->fd.first_pipe[0]);
@@ -52,27 +53,24 @@ void	last_child(t_data *data, char *envp[], char *argv[])
 	data->pid_2 = fork();
 	if (data->pid_2 < 0)
 	{
-		free_and_close_all(data, 0);
+		free_and_close_all(data);
 		exit(EXIT_SUCCESS);
 	}
 	if (data->pid_2 == 0)
 	{
 		if (dup2(data->fd.first_pipe[0], STDIN_FILENO) == -1)
 		{
-			perror("");
-			free_and_close_all(data, 0);
+			free_and_close_all(data);
 			exit(EXIT_FAILURE);
 		}
 		if (dup2(data->fd.outfile, STDOUT_FILENO) == -1)
 		{
-			perror("");
-			free_and_close_all(data, 2);
+			free_and_close_all(data);
 			exit(EXIT_FAILURE);
 		}
 		close(data->fd.first_pipe[1]);
 		exec_command(data, envp, argv[3]);
 	}
-	/*close(data->fd.outfile);*/
 }
 
 void	one_conmmand(t_data *data, char *envp[], char *argv[])
@@ -80,7 +78,7 @@ void	one_conmmand(t_data *data, char *envp[], char *argv[])
 	data->pid_1 = fork();
 	if (data->pid_1 < 0)
 	{
-		free_and_close_all(data, 0);
+		free_and_close_all(data);
 		exit(EXIT_SUCCESS);
 	}
 	if (data->pid_1 == 0)
@@ -88,13 +86,13 @@ void	one_conmmand(t_data *data, char *envp[], char *argv[])
 		if (dup2(data->fd.infile, STDIN_FILENO) == -1)
 		{
 			perror("");
-			free_and_close_all(data, 0);
+			free_and_close_all(data);
 			exit(EXIT_FAILURE);
 		}
 		if (dup2(data->fd.outfile, STDOUT_FILENO) == -1)
 		{
 			perror("");
-			free_and_close_all(data, 0);
+			free_and_close_all(data);
 			exit(EXIT_FAILURE);
 		}
 		close(data->fd.infile);

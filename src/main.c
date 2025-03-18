@@ -11,7 +11,13 @@
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <stdio.h>
+
+static void	error_message(char *str)
+{
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd(": ", 2);
+	perror("");
+}
 
 static void	initialize_values(t_data *data)
 {
@@ -31,11 +37,11 @@ static void	fds_pipes(t_data *data, char *argv[], int argc, char *envp[])
 {
 	data->fd.outfile = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (data->fd.outfile == -1)
-		perror("");
+		error_message(argv[4]);
 	data->fd.infile = open(argv[1], O_RDONLY, 0644);
 	if (data->fd.infile == -1)
 	{
-		perror("");
+		error_message(argv[2]);
 		close(data->fd.outfile);
 		exit(EXIT_SUCCESS);
 	}
@@ -85,14 +91,14 @@ int	main(int argc, char **argv, char **envp)
 		close(data.fd.first_pipe[1]);
 		last_child(&data, envp, argv);
 		close(data.fd.first_pipe[0]);
-		free_and_close_all(&data, 0);
+		free_and_close_all(&data);
 	}
 	else if (argc == 4)
 	{
 		one_conmmand(&data, envp, argv);
-		free_and_close_all(&data, 0);
+		free_and_close_all(&data);
 	}
-	free_and_close_all(&data, 1);
+	free_and_close_all(&data);
 	handle_return_of_status(data, argc);
 	return (0);
 }
